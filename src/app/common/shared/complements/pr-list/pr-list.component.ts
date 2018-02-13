@@ -7,7 +7,7 @@ import { Registry } from "../../../interfaces/registry";
     templateUrl: './pr-list.component.html'
 })
 
-export class ListComponent implements OnInit {
+export class PrListComponent implements OnInit {
 
     @Input() registries: Registry[];
     @Input() titles_array: string[];
