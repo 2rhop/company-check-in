@@ -9,13 +9,13 @@ import { PrFooterComponent } from './layouts/pr-footer/pr-footer.component';
 
 //--
 const complements = [
-    ListComponent
+    ListComponent, PrNavbarComponent, PrFooterComponent
 ]
 //--
 @NgModule({
-    imports: [RouterModule, FormsModule,CommonModule],
+    imports: [RouterModule, FormsModule, CommonModule],
     exports: [...complements],
-    declarations: [...complements, PrNavbarComponent, PrFooterComponent],
+    declarations: [...complements],
     providers: []
 })
 
