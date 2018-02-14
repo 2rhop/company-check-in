@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', loadChildren: 'app/pr-modules/person-reg.module#PersonRegModule' },
+  { path: '', loadChildren: 'app/person-reg/person-reg.module#PersonRegModule' },
 ];
 
 @NgModule({
