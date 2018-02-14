@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PrMainPageComponent } from './pr-main-page/pr-main-page.component';
+import { PageNotFoundComponent } from '../common/shared/pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -10,7 +11,8 @@ const routes: Routes = [
     // , children: [
     //   { path: ':id', component: OtherComponent }
     // ]
-  }
+  },
+  { path: '**', component:  PageNotFoundComponent},
 ];
 
 @NgModule({
