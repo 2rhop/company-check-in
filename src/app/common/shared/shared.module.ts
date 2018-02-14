@@ -7,10 +7,11 @@ import { CoreModule } from '../core/core.module';
 import { PrListComponent } from "./complements/pr-list/pr-list.component";
 import { PrNavbarComponent } from './layouts/pr-navbar/pr-navbar.component';
 import { PrFooterComponent } from './layouts/pr-footer/pr-footer.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 //--
 const complements = [
-    PrListComponent, PrNavbarComponent, PrFooterComponent
+    PrListComponent, PrNavbarComponent, PrFooterComponent, PageNotFoundComponent
 ]
 //--
 @NgModule({
