@@ -1,3 +1,12 @@
-<pr-timer></pr-timer>
-<pr-sign-form></pr-sign-form>
-<pr-list [registries]="entries" [titles_array]="titles"></pr-list>
+<div class="container">
+  <pr-timer></pr-timer>
+  <pr-sign-form></pr-sign-form>
+  <div class="row">
+    <div class="col-md 4">
+        <pr-image-box></pr-image-box>
+    </div>
+    <div class="col-md-8">
+      <pr-list [registries]="entries" [titles_array]="titles"></pr-list>
+    </div>
+  </div>
+</div>

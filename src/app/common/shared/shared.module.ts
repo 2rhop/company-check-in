@@ -10,12 +10,14 @@ import { PrFooterComponent } from './layouts/pr-footer/pr-footer.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PrSignFormComponent } from './complements/pr-sign-form/pr-sign-form.component';
 import { PrTimerComponent } from './complements/pr-timer/pr-timer.component';
+import { PrImageBoxComponent } from './complements/pr-image-box/pr-image-box.component';
 
 //--
 const complements = [
     PrListComponent, PrNavbarComponent,
     PrFooterComponent, PageNotFoundComponent,
-    PrSignFormComponent, PrTimerComponent
+    PrSignFormComponent, PrTimerComponent,
+    PrImageBoxComponent
 ]
 //--
 @NgModule({
