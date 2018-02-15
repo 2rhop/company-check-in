@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Registry } from '../../common/interfaces/registry';
-import { PersonDataService } from '../../common/core/services/person-data/person-data.service';
+import { Registry } from '../../../common/interfaces/registry';
+import { PersonDataService } from '../../../common/core/services/person-data/person-data.service';
 
 @Component({
   selector: 'pr-main-page',

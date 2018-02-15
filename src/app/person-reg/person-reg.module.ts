@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 
 import { PersonRegRoutingModule } from './person-reg-routing.module';
-import { SharedModule } from '../common/shared/shared.module';
-import { PrMainPageComponent } from './pr-main-page/pr-main-page.component';
+import { MainModule } from './main/main.module';
 
 @NgModule({
     imports: [
         PersonRegRoutingModule,
-        SharedModule
+        MainModule
     ],
-    declarations: [PrMainPageComponent],
+    declarations: [],
 })
 export class PersonRegModule { }
