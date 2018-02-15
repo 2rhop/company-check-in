@@ -1,0 +1,12 @@
+.pr-form {
+  align-items: center;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:focus
+ {
+ box-shadow: none;
+}
