@@ -4,10 +4,11 @@ import { PersonDataProxyService } from '../core/services/person-data/person-data
 import { PersonDataService } from '../core/services/person-data/person-data.service';
 import { RegistryDataProxyService } from './services/reg-data/registry-data-proxy.service';
 import { RegistryDataService } from './services/reg-data/registry-data.service';
+import { ClockService } from './services/clock.service';
 
 @NgModule({
   imports: [],
   providers: [PersonDataProxyService, PersonDataService,
-    RegistryDataProxyService, RegistryDataService]
+    RegistryDataProxyService, RegistryDataService,ClockService]
 })
 export class CoreModule { }
