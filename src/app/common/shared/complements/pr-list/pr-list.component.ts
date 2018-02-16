@@ -4,7 +4,8 @@ import { Registry } from "../../../interfaces/registry";
 
 @Component({
     selector: `pr-list`,
-    templateUrl: './pr-list.component.html'
+    templateUrl: './pr-list.component.html',
+    styleUrls: ['./pr-list.component.css']
 })
 
 export class PrListComponent implements OnInit {
