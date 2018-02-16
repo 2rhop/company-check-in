@@ -1,12 +1,19 @@
-<form action="#" class="pr-form row">
+<div *ngIf="invalid" class="alert alert-warning alert-dismissible fade show" role="alert">
+  <button (click)="invalid=undefined" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Oh god!</strong> You must type an incorrect key!
+</div>
+<form #t="ngForm" (ngSubmit)="onSubmit(t)" novalidate class="pr-form row">
 
   <div class="form-group col-md-10">
-      <div class="input-group">
-        <span class="input-group-addon">
-          <i class="fa fa-key" aria-hidden="true"></i>
-        </span>
-        <input type="text" class="form-control" name="name" id="name" placeholder="Enter your key here . . ." />
-      </div>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="fa fa-key" aria-hidden="true"></i>
+      </span>
+      <input ngModel required #name="ngModel" type="text" class="form-control" name="name" id="name" placeholder="Enter your key here . . ."
+      />
+    </div>
   </div>
 
   <div class="form-group col-md-2">
