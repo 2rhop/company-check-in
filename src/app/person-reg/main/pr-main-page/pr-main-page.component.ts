@@ -17,7 +17,7 @@ export class PrMainPageComponent implements OnInit {
   personList: Person[];
   msg: string;
   title: string;
-  person_name; class;
+  person_name; class; time :Date;
 
   constructor(private person_service: PersonDataService, private reg_service: RegistryDataService) { }
 
@@ -33,7 +33,7 @@ export class PrMainPageComponent implements OnInit {
       this.class = 'success';
       this.entries.push({
         name: this.person_name,
-        time: new Date(Date.now())
+        time: this.time
       })
       this.init();
     } else {
@@ -45,6 +45,10 @@ export class PrMainPageComponent implements OnInit {
 
   getPersonFromKey(k: string): string {
     return this.person_service.getPersonFromKey(k);
+  }
+
+  getTimer(t) {
+    this.time = t;
   }
 
   init() {
