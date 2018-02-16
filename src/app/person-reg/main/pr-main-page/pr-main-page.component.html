@@ -1,9 +1,12 @@
 <div class="container">
   <pr-timer></pr-timer>
-  <pr-sign-form></pr-sign-form>
+  <pr-sign-form (text_field)="handlePersonRegistry($event)"></pr-sign-form>
+  <div *ngIf="class" class="text-center alert alert-{{class}}" role="alert">
+  <strong>{{title}}</strong>{{msg|uppercase}}
+  </div>
   <div class="row">
     <div class="col-md 4">
-        <pr-image-box></pr-image-box>
+      <pr-image-box></pr-image-box>
     </div>
     <div class="col-md-8">
       <pr-list [registries]="entries" [titles_array]="titles"></pr-list>
