@@ -1,0 +1,12 @@
+.image-box{
+    background-color: antiquewhite;
+    max-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+
+img{
+    height: 250px;
+}
