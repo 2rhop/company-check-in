@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ClockService } from '../../../core/services/clock.service';
 
 @Component({
   selector: 'pr-timer',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrTimerComponent implements OnInit {
 
-  constructor() { }
+  time:Date;
+  @Output() timeEmitter=new EventEmitter<Date>();
+
+  constructor(private clockService: ClockService) { }
 
   ngOnInit() {
+    this.clockService.getClock().subscribe(time => {
+      this.time = time;
+      this.timeEmitter.emit(time);
+    });
   }
-
+  
 }
