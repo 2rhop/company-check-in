@@ -1,0 +1,19 @@
+nav{
+    color: white;
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+.title {
+margin-left: .5rem;
+}
+
+.logo{
+    font-size: 1.5rem;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+}
+

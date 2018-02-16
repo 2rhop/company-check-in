@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrNavbarComponent implements OnInit {
 
+  title='Person-Reg';
+
   constructor() { }
 
   ngOnInit() {
