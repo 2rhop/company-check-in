@@ -1,14 +1,14 @@
-import { AppPage } from './app.po';
+import { PersonRegPage } from './app.po';
 
 describe('person-reg App', () => {
-  let page: AppPage;
+  let page: PersonRegPage;
 
   beforeEach(() => {
-    page = new AppPage();
+    page = new PersonRegPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });
