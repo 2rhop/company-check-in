@@ -33,9 +33,9 @@ export class PrMainPageComponent implements OnInit {
       this.class = 'success';
       this.entries.push({
         name: this.person_name,
-        time: this.time
+        time: this.time.toString()
       })
-      this.init();
+      // this.init();
     } else {
       this.msg = '';
       this.title = 'Incorrect Person'.toUpperCase();
@@ -47,7 +47,7 @@ export class PrMainPageComponent implements OnInit {
     return this.person_service.getPersonFromKey(k);
   }
 
-  getTimer(t) {
+  getTimer(t:Date) {
     this.time = t;
   }
 

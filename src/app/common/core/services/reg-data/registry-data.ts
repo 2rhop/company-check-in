@@ -3,14 +3,14 @@ import { Registry } from "../../../interfaces/registry";
 export const REGISTRY_DATA: Registry[] = [
     {
         name: 'Rene Ricardo Perez',
-        time: new Date(Date.now())
+        time: '1968-11-16T20:00:00'
     },
     {
         name: 'Juan alberto',
-        time: new Date('2016')
+        time: '1968-11-16T00:00:00'
     },
     {
         name: 'elisabeth Perez',
-        time: new Date('2015')
+        time: '1968-11-16T00:00:00'
     },
 ]
