@@ -5,10 +5,12 @@ import { PersonDataService } from '../core/services/person-data/person-data.serv
 import { RegistryDataProxyService } from './services/reg-data/registry-data-proxy.service';
 import { RegistryDataService } from './services/reg-data/registry-data.service';
 import { ClockService } from './services/clock.service';
+import { HttpModule, Http } from '@angular/http';
 
 @NgModule({
-  imports: [],
+  imports: [HttpModule],
   providers: [PersonDataProxyService, PersonDataService,
-    RegistryDataProxyService, RegistryDataService,ClockService]
+    RegistryDataProxyService, RegistryDataService, ClockService,
+    ]
 })
 export class CoreModule { }
