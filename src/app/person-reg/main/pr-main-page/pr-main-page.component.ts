@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Registry } from '../../../common/interfaces/registry';
 import { Person } from '../../../common/interfaces/person';
+import { Observable } from "rxjs/Observable";
+import { of } from 'rxjs/observable/of';
 import { PersonDataService, VALUE } from '../../../common/core/services/person-data/person-data.service';
 import { RegistryDataService } from '../../../common/core/services/reg-data/registry-data.service';
 
@@ -17,7 +19,7 @@ export class PrMainPageComponent implements OnInit {
   personList: Person[];
   msg: string;
   title: string;
-  person_name; class; time :Date;
+  class: string; time: Date;
 
   constructor(private person_service: PersonDataService, private reg_service: RegistryDataService) { }
 
@@ -26,28 +28,26 @@ export class PrMainPageComponent implements OnInit {
   }
 
   handlePersonRegistry(p) {
-    this.person_name = this.getPersonFromKey(p);
-    if (this.person_name != VALUE) {
-      this.title = 'Welcome: ';
-      this.msg = this.person_name;
-      this.class = 'success';
-      this.entries.push({
-        name: this.person_name,
-        time: this.time.toString()
-      })
-      // this.init();
-    } else {
-      this.msg = '';
-      this.title = 'Incorrect Person'.toUpperCase();
-      this.class = 'danger';
-    }
+    this.person_service.getPersonFromKey(p).subscribe(name => {
+      if (name != VALUE) {
+        this.title = 'Welcome: ';
+        this.msg = name;
+        this.class = 'success';
+        this.entries.push({
+          name: name,
+          time: this.time.toString()
+        })
+        // this.init();
+      } else {
+        this.msg = '';
+        this.title = 'Incorrect Person'.toUpperCase();
+        this.class = 'danger';
+      }
+    });
+
   }
 
-  getPersonFromKey(k: string): string {
-    return this.person_service.getPersonFromKey(k);
-  }
-
-  getTimer(t:Date) {
+  getTimer(t: Date) {
     this.time = t;
   }
 

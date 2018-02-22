@@ -2,31 +2,25 @@ import { Injectable } from '@angular/core';
 
 import { PersonDataProxyService } from './person-data-proxy.service';
 import { Person } from '../../../interfaces/person';
+import { Observable } from "rxjs/Observable";
+import { of } from 'rxjs/observable/of';
 
-export const VALUE: string = 'none';
+export const VALUE: string = '';
 
 @Injectable()
 export class PersonDataService {
 
   constructor(private proxy: PersonDataProxyService) { }
 
-  getList_of_Persons(): Person[] {
-    let data;
-    this.proxy.getData().subscribe(res => {
-      data = res;
-    })
-    return data;
-  }
+  getPersonFromKey(k: string): Observable<string> {
+    let ob: Observable<Person[]> = this.proxy.getData();
 
-  getPersonFromKey(k: string): string {
-    let list: Person[] = this.getList_of_Persons();
-    let p = VALUE;
-    list.forEach(element => {
-      if (element.signature == k) {
-        p = element.name
-      }
-    });
-    return p;
+    return ob.map(persons => {
+      return persons.filter(person => { return person.signature == k; })
+    }).map(persons => {
+      return persons.map(person => person.name)
+    }).reduce((name, current) => name + current, VALUE);
+
   }
 
 }
