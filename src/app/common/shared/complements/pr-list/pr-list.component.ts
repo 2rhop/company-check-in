@@ -5,7 +5,7 @@ import { Registry } from "../../../interfaces/registry";
 @Component({
     selector: `pr-list`,
     templateUrl: './pr-list.component.html',
-    styleUrls: ['./pr-list.component.css']
+    styleUrls: ['./pr-list.component.css'],
 })
 
 export class PrListComponent implements OnInit {
@@ -15,5 +15,6 @@ export class PrListComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() { 
+    }
 }

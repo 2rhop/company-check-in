@@ -3,21 +3,26 @@ import { Observable } from 'rxjs/Observable';
 import { Registry } from '../../../interfaces/registry';
 import { of } from 'rxjs/observable/of';
 import { REGISTRY_DATA } from './registry-data';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { environment } from 'environments/environment';
 
 @Injectable()
 export class RegistryDataProxyService {
 
-  constructor(private http:Http) { }
+  url: string;
+
+  constructor(private http: Http) {
+    this.url = environment.api_url + 'registries';
+  }
 
   getData(): Observable<Registry[]> {
     // return of(REGISTRY_DATA);
-    return this.http.get(environment.api_url + 'registries').map(res => res.json());
+    return this.http.get(this.url).map(res => res.json());
   }
 
-  setRegistry(r: Registry) {
-    REGISTRY_DATA.push(r);
+  setRegistry(r: Registry) :Observable<Response>{
+    // REGISTRY_DATA.push(r);
+    return this.http.post(this.url, r);
   }
 
 }
