@@ -1,0 +1,19 @@
+tr {
+  width: 100%;
+  display: inline-table;
+  table-layout: fixed;
+}
+
+table {
+  height: 100%;
+  display: table-row-group;
+  margin-bottom: 8rem;
+}
+
+tbody {
+  overflow-y: scroll;
+  height: 74vh;
+  width: 98.5%;
+  position: absolute;
+  padding-bottom: 2rem;
+}
