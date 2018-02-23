@@ -1,5 +1,5 @@
 <div class="container">
-  <pr-timer (timeEmitter)="getTimer($event)"></pr-timer>
+  <pr-timer class="text-{{timer_color}}" (timeEmitter)="getTimer($event)"></pr-timer>
   <pr-sign-form (text_field)="handlePersonRegistry($event)"></pr-sign-form>
   <div *ngIf="class" class="text-center alert alert-{{class}}" role="alert">
   <strong>{{title}}</strong>{{msg|uppercase}}
