@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* --------------- Media Queries -------------------- */
+
+/* iPad */
+
+@media screen and (max-width:768px) {
+  table.table tbody {
+    width: 96%;
+  }
+}
+
+/* iPhone 7 Plus */
+
+@media screen and (max-width:414px) {
+  table.table tbody {
+    width: 93%;
+  }
+}
+
+/* iPhone X */
+
+@media screen and (max-width:375px) {
+  table.table tbody {
+    width: 92%;
+  }
+}
