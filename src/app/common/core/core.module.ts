@@ -6,11 +6,13 @@ import { RegistryDataProxyService } from './services/reg-data/registry-data-prox
 import { RegistryDataService } from './services/reg-data/registry-data.service';
 import { ClockService } from './services/clock.service';
 import { HttpModule, Http } from '@angular/http';
+import { ReversePipe } from './pipes/reverse.pipe';
 
 @NgModule({
   imports: [HttpModule],
   providers: [PersonDataProxyService, PersonDataService,
     RegistryDataProxyService, RegistryDataService, ClockService,
+    ReversePipe
     ]
 })
 export class CoreModule { }
