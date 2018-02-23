@@ -10,6 +10,12 @@
   }
 }
 
+@media screen and (max-width:600px) {
+  span.image-box img {
+    display: none;
+  }
+}
+
 /* iPhone 7 Plus */
 
 @media screen and (max-width:414px) {
