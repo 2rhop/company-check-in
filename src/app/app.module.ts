@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { SharedModule } from "./common/shared/shared.module";
 import { PersonRegModule } from './person-reg/person-reg.module';
 import { AppRoutingModule } from './app-routing.module';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 
 
@@ -16,7 +15,7 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
     AppComponent
   ],
   imports: [
-    BrowserModule,BrowserAnimationsModule, ToastModule.forRoot(),
+    BrowserModule,BrowserAnimationsModule,
     SharedModule,
     AppRoutingModule
   ],

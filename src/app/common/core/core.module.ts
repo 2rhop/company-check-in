@@ -7,12 +7,14 @@ import { RegistryDataService } from './services/reg-data/registry-data.service';
 import { ClockService } from './services/clock.service';
 import { HttpModule, Http } from '@angular/http';
 import { ReversePipe } from './pipes/reverse.pipe';
+import { MessageService } from './services/message.service';
+import { ToastOptions } from 'ng2-toastr';
 
 @NgModule({
   imports: [HttpModule],
   providers: [PersonDataProxyService, PersonDataService,
     RegistryDataProxyService, RegistryDataService, ClockService,
-    ReversePipe
+    ReversePipe,MessageService,ToastOptions
     ]
 })
 export class CoreModule { }

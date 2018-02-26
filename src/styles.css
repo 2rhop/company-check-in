@@ -1,5 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
+.toast {
+  top: 8rem;
+  border-top: 3px solid white;
+  border-radius: .5rem !important;
+}
+
 /* --------------- Media Queries -------------------- */
 
 /* iPad */
