@@ -12,8 +12,8 @@ table {
 
 tbody {
   overflow-y: scroll;
-  height: 74vh;
-  width: 98.5%;
+  max-height: 74vh;
+  width: auto;
   position: absolute;
   padding-bottom: 2rem;
 }
