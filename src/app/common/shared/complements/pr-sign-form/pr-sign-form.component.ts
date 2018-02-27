@@ -1,7 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewContainerRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ClassField } from '@angular/compiler/src/output/output_ast';
 import { Person } from '../../../interfaces/person';
+import { MessageService } from '../../../core/services/messages/message.service';
+import { ToastOptions } from 'ng2-toastr';
 
 @Component({
   selector: 'pr-sign-form',
@@ -13,10 +15,9 @@ export class PrSignFormComponent implements OnInit {
   @Output() text_field = new EventEmitter();
   invalid: string;
 
-  constructor() { }
+  constructor(private messages: MessageService, private view: ViewContainerRef) { }
 
   ngOnInit() {
-    this.init();
   }
 
   onSubmit(t: NgForm) {
@@ -30,16 +31,11 @@ export class PrSignFormComponent implements OnInit {
   }
 
   setInvalidField() {
-    this.invalid = 'invalid';
+    this.messages.showWarning('<strong>Oh god!</strong> You must type an incorrect key!', this.view,
+      <ToastOptions>{ enableHTML: true,toastLife:3000 });
   }
 
   submit(t) {
     this.text_field.emit(t)
-    this.init();
   }
-
-  init() {
-    this.invalid = undefined;
-  }
-
 }
