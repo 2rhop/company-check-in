@@ -11,7 +11,6 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { PrSignFormComponent } from './complements/pr-sign-form/pr-sign-form.component';
 import { PrTimerComponent } from './complements/pr-timer/pr-timer.component';
 import { PrImageBoxComponent } from './complements/pr-image-box/pr-image-box.component';
-import { ToastModule } from "ng2-toastr";
 
 //--
 const complements = [
@@ -22,7 +21,7 @@ const complements = [
 ]
 //--
 @NgModule({
-    imports: [RouterModule, FormsModule, CommonModule, CoreModule,ToastModule.forRoot()],
+    imports: [RouterModule, FormsModule, CommonModule, CoreModule],
     exports: [...complements],
     declarations: [...complements],
     providers: []

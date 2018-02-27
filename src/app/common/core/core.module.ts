@@ -7,14 +7,17 @@ import { RegistryDataService } from './services/reg-data/registry-data.service';
 import { ClockService } from './services/clock.service';
 import { HttpModule, Http } from '@angular/http';
 import { ReversePipe } from './pipes/reverse.pipe';
-import { MessageService } from './services/message.service';
+import { MessageService } from './services/messages/message.service';
 import { ToastOptions } from 'ng2-toastr';
+import { CustomToastOptions } from './services/messages/custom-toast-options';
+import { ToastModule } from 'ng2-toastr';
 
 @NgModule({
-  imports: [HttpModule],
+  imports: [HttpModule,ToastModule.forRoot()],
   providers: [PersonDataProxyService, PersonDataService,
     RegistryDataProxyService, RegistryDataService, ClockService,
-    ReversePipe,MessageService,ToastOptions
-    ]
+    ReversePipe,  MessageService,
+    { provide: ToastOptions, useClass: CustomToastOptions },
+  ]
 })
 export class CoreModule { }
