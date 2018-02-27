@@ -9,29 +9,29 @@ export class MessageService {
   }
 
   // Toastr messages
-  showSuccess(str: string, vcr: ViewContainerRef, opt?: ToastOptions): Promise<Toast> {
+  showSuccess(str: string, vcr: ViewContainerRef, title?: string, opt?: ToastOptions): Promise<Toast> {
     this.toastr.setRootViewContainerRef(vcr);
-      return this.toastr.success(str, 'SUCCESS', opt);
+    return this.toastr.success(str, title, opt);
   }
 
-  showError(str: string, vcr: ViewContainerRef, opt?: ToastOptions): Promise<Toast> {
+  showError(str: string, vcr: ViewContainerRef, title?: string, opt?: ToastOptions): Promise<Toast> {
     this.toastr.setRootViewContainerRef(vcr);
-      return this.toastr.error(str, 'ERROR', opt);
+    return this.toastr.error(str, title, opt);
   }
 
-  showWarning(str: string, vcr: ViewContainerRef, opt?: ToastOptions): Promise<Toast> {
+  showWarning(str: string, vcr: ViewContainerRef, title?: string, opt?: ToastOptions): Promise<Toast> {
     this.toastr.setRootViewContainerRef(vcr);
-      return this.toastr.warning(str, 'WARNING', opt);
+    return this.toastr.warning(str, title, opt);
   }
 
-  showInfo(str: string, vcr: ViewContainerRef, opt?: ToastOptions): Promise<Toast> {
+  showInfo(str: string, vcr: ViewContainerRef, title?: string, opt?: ToastOptions): Promise<Toast> {
     this.toastr.setRootViewContainerRef(vcr);
-      return this.toastr.info(str, null, opt);
+    return this.toastr.info(str, title, opt);
   }
 
-  showCustom(html: string, vcr: ViewContainerRef, opt: ToastOptions): Promise<Toast> {
+  showCustom(body: string, title: string, vcr: ViewContainerRef, opt: ToastOptions): Promise<Toast> {
     this.toastr.setRootViewContainerRef(vcr);
-    return this.toastr.custom(html, null, opt);
+    return this.toastr.custom(body, title, opt);
   }
 
   onClick(): Observable<Toast> {
