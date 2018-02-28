@@ -31,7 +31,7 @@ export class PrSignFormComponent implements OnInit {
   }
 
   setInvalidField() {
-    this.messages.showWarning('<strong>Oh god!</strong> You have typed an incorrect key!', this.view,null,
+    this.messages.showInfo('<strong>Oh god!</strong> You have typed an incorrect key!', this.view,null,
       <ToastOptions>{ enableHTML: true,toastLife:3000 });
   }
 
