@@ -21,7 +21,7 @@ import { CustomToastOptions } from '../../../common/core/services/messages/custo
 })
 export class PrMainPageComponent implements OnInit, OnDestroy {
 
-  titles = ['Nombre', 'Hora'];
+  titles = ['Nombre', '=>','Hora'];
   entries: Registry[];
   personList: Person[];
   time: Date; timer_color: string;
@@ -50,27 +50,40 @@ export class PrMainPageComponent implements OnInit, OnDestroy {
   }
 
   handlePersonRegistry(p) {
-    if (this.canSign()) {
-      this._subscribe_persons = this.person_service.getPersonFromKey(p).subscribe(name => {
-        if (name != VALUE) {
-          this.reg_service.addRegistry({
-            name: name,
-            time: this.time.toString()
-          }).subscribe(res => {
-            this.init();
-            this.toast_service.showSuccess('Welcome: ' + name.toUpperCase(), this.vcr);
-          },
-            error => {
-              console.log('error: ' + error);
-            });
-        } else {
-          this.toast_service.showError('Incorrect Person', this.vcr);
-        }
-      });
-    } else {
-      this.toast_service.showInfo('You can not sign in this momment', this.vcr,
-        <CustomToastOptions>{ showCloseButton: true });
-    }
+    let late = !this.canSign();
+    let signin:boolean=true;
+
+    // if (this.canSign()) {
+    this._subscribe_persons = this.person_service.getPersonFromKey(p).subscribe(name => {
+      if (name != VALUE) {
+        this.reg_service.addRegistry({
+          name: name,
+          time: this.time.toString(),
+          signin: signin,
+          late: late
+        }).subscribe(res => {
+          let text=(signin==true)?'Welcome':'See you';
+          this.init();        
+          if (late)
+            this.toast_service.showError(text+': ' + name.toUpperCase(), this.vcr,`YOU'RE LATE`);
+          else
+            this.toast_service.showSuccess(text+': ' + name.toUpperCase(), this.vcr,`ON TIME`);
+        },
+          error => {
+            console.log('error: ' + error);
+          });
+      } else {
+        this.toast_service.showWarning('That person does not exist!', this.vcr,'WARGNING');
+      }
+    });
+    // } else {
+    //   this.toast_service.showInfo('You can not sign in this momment', this.vcr,
+    //     <CustomToastOptions>{ showCloseButton: true });
+    // }
+  }
+
+  isSignIn(p:Person){
+
   }
 
   getTimer(t: Date) {

@@ -8,6 +8,7 @@ table {
   height: 100%;
   display: table-row-group;
   margin-bottom: 8rem;
+  line-height: none;
 }
 
 tbody {
@@ -16,4 +17,8 @@ tbody {
   width: auto;
   position: absolute;
   padding-bottom: 2rem;
+}
+
+span{
+  margin-right: 1rem;
 }
