@@ -13,6 +13,7 @@
       </td>
       <td>
         <i *ngIf="item.signin==true" class="fas fa-sign-in-alt" [class.text-success]="item.late==false" [class.text-danger]="item.late==true"></i>
+        <i *ngIf="item.signin==false" class="text-warning fas fa-sign-out-alt"></i>
       </td>
       <td>{{item.time | date:'hh:mm:ss a'}}</td>
     </tr>

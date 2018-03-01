@@ -21,7 +21,7 @@ import { CustomToastOptions } from '../../../common/core/services/messages/custo
 })
 export class PrMainPageComponent implements OnInit, OnDestroy {
 
-  titles = ['Nombre', '=>','Hora'];
+  titles = ['Nombre', '=>', 'Hora'];
   entries: Registry[];
   personList: Person[];
   time: Date; timer_color: string;
@@ -39,42 +39,53 @@ export class PrMainPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.init();
+    this.setDefaultDates();
+  }
+
+  setDefaultDates() {
+    this._timeStart = new Date(Date.now())
+    this._timeEnd = new Date(Date.now());
     this.setDateRange();
   }
 
   setDateRange(): void {
-    this._timeStart = new Date(Date.now())
-    this._timeEnd = new Date(Date.now());
     this._timeStart.setHours(8, 15, 0);
     this._timeEnd.setHours(16, 30, 0);
   }
 
   handlePersonRegistry(p) {
-    let late = !this.canSign();
-    let signin:boolean=true;
 
     // if (this.canSign()) {
     this._subscribe_persons = this.person_service.getPersonFromKey(p).subscribe(name => {
+      let late = this.isLate();
       if (name != VALUE) {
-        this.reg_service.addRegistry({
-          name: name,
-          time: this.time.toString(),
-          signin: signin,
-          late: late
-        }).subscribe(res => {
-          let text=(signin==true)?'Welcome':'See you';
-          this.init();        
-          if (late)
-            this.toast_service.showError(text+': ' + name.toUpperCase(), this.vcr,`YOU'RE LATE`);
-          else
-            this.toast_service.showSuccess(text+': ' + name.toUpperCase(), this.vcr,`ON TIME`);
-        },
-          error => {
-            console.log('error: ' + error);
-          });
+        this.isSignedIn(name).subscribe(name_signed => {
+          let signin = name_signed == '';
+          this.reg_service.addRegistry({
+            name: name,
+            time: this.time.toString(),
+            signin: signin,
+            late: late
+          }).subscribe(res => {
+            let text = 'Welcome' + ': ' + name.toUpperCase();
+            this.init();
+            if (signin) {
+              if (late)
+                this.toast_service.showError(text, this.vcr, `YOU'RE LATE`);
+              else
+                this.toast_service.showSuccess(text, this.vcr, `ON TIME`);
+            } else
+              this.toast_service.showSuccess(name.toUpperCase(), this.vcr, 'See you soon');
+          },
+            error => {
+              console.log('error: ' + error);
+            });
+        });
       } else {
-        this.toast_service.showWarning('That person does not exist!', this.vcr,'WARGNING');
+        this.toast_service.showWarning('That person does not exist!', this.vcr, 'WARGNING');
       }
+
+
     });
     // } else {
     //   this.toast_service.showInfo('You can not sign in this momment', this.vcr,
@@ -82,21 +93,22 @@ export class PrMainPageComponent implements OnInit, OnDestroy {
     // }
   }
 
-  isSignIn(p:Person){
-
+  isSignedIn(name: string): Observable<string> {
+    return this.reg_service.isSignedIn(name);
   }
 
   getTimer(t: Date) {
     this.time = t;
-    if (this.canSign()) {
-      this.timer_color = 'success';
-    } else {
-      this.timer_color = 'danger';
-    }
+    this.setTimerColor(this.isLate());   
+
+  }
+
+  setTimerColor(late: boolean) {
+    this.timer_color = (late == true) ? 'danger' : 'success';
   }
 
   init() {
-    this._subscribe_registries = this.reg_service.getList_of_Registries().subscribe(res => {
+    this._subscribe_registries = this.reg_service.getList_of_TodayRegistries().subscribe(res => {
       this.entries = res;
       this.reverse.transform(this.entries);
     });
@@ -107,8 +119,8 @@ export class PrMainPageComponent implements OnInit, OnDestroy {
     this._subscribe_persons.unsubscribe();
   }
 
-  canSign(): boolean {
-    return (this.time < this._timeStart) || (this.time > this._timeEnd);
+  isLate(): boolean {
+    return (this.time > this._timeStart) || (this.time < this._timeEnd);
   }
 
 }
