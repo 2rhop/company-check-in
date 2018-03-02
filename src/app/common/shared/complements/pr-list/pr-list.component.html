@@ -5,7 +5,7 @@
       <th *ngFor="let item of titles_array">{{item}}</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="this.registries">
     <tr *ngFor="let item of registries; let i = index">
       <th scope="row">{{i+1}}</th>
       <td>
