@@ -99,7 +99,7 @@ export class PrMainPageComponent implements OnInit, OnDestroy {
 
   getTimer(t: Date) {
     this.time = t;
-    this.setTimerColor(this.isLate());   
+    this.setTimerColor(this.isLate());
     this.init();
 
   }
@@ -122,7 +122,7 @@ export class PrMainPageComponent implements OnInit, OnDestroy {
   }
 
   isLate(): boolean {
-    return (this.time > this._timeStart) || (this.time < this._timeEnd);
+    return (this.time > this._timeStart) && (this.time < this._timeEnd);
   }
 
 }
