@@ -100,6 +100,7 @@ export class PrMainPageComponent implements OnInit, OnDestroy {
   getTimer(t: Date) {
     this.time = t;
     this.setTimerColor(this.isLate());   
+    this.init();
 
   }
 
@@ -111,6 +112,7 @@ export class PrMainPageComponent implements OnInit, OnDestroy {
     this._subscribe_registries = this.reg_service.getList_of_TodayRegistries().subscribe(res => {
       this.entries = (res.length > 0) ? res : undefined;
       this.reverse.transform(this.entries);
+      this._subscribe_registries.unsubscribe();
     });
   }
 
