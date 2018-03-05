@@ -8,7 +8,7 @@ import { PersonDataService, VALUE } from '../../../common/core/services/person-d
 import { RegistryDataService } from '../../../common/core/services/reg-data/registry-data.service';
 import { Subscription } from 'rxjs';
 import { ReversePipe } from '../../../common/core/pipes/reverse.pipe';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { ToastsManager, ToastOptions } from 'ng2-toastr/ng2-toastr';
 import { MessageService } from '../../../common/core/services/messages/message.service';
 import { CustomToastOptions } from '../../../common/core/services/messages/custom-toast-options';
 
@@ -113,6 +113,11 @@ export class PrMainPageComponent implements OnInit, OnDestroy {
       this.entries = (res.length > 0) ? res : undefined;
       this.reverse.transform(this.entries);
       this._subscribe_registries.unsubscribe();
+    }, error => {
+      this.toast_service.showError(error, this.vcr, `ERROR TIMEOUT`,<ToastOptions>{
+        showCloseButton:true,        
+      });
+      this.entries=undefined;
     });
   }
 
