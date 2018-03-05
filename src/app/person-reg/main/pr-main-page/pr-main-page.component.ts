@@ -110,6 +110,7 @@ export class PrMainPageComponent implements OnInit, OnDestroy {
 
   init() {
     this._subscribe_registries = this.reg_service.getList_of_TodayRegistries().subscribe(res => {
+      this.toast_service.toastr.clearAllToasts();
       this.entries = (res.length > 0) ? res : undefined;
       this.reverse.transform(this.entries);
       this._subscribe_registries.unsubscribe();
