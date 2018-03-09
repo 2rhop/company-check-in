@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  api_url:'http://rener-pc:3000/'
+  // api_url:'http://rener-pc:3000/',
+  api_url:'https://0rt11tcp4bbs.runkit.sh/'
 };
